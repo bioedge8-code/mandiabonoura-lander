@@ -154,6 +154,9 @@
 
   /* ===== Sections ===== */
   .group{width:100%;margin-top:26px}
+  /* section order: app first, then menu, contact, social */
+  .g-app{order:1}.g-menu{order:2}.g-contact{order:3}.g-social{order:4}
+  .wrap>footer{order:9}
   .group-label{
     font-size:12.5px;font-weight:700;color:var(--muted);
     letter-spacing:1px;text-transform:uppercase;
@@ -272,20 +275,60 @@
   /* stagger */
   .d1{animation-delay:.10s}.d2{animation-delay:.16s}.d3{animation-delay:.22s}
   .d4{animation-delay:.28s}.d5{animation-delay:.34s}.d6{animation-delay:.40s}.d7{animation-delay:.46s}
+
+  /* ===== Menu overlay (in-page image viewer) ===== */
+  body.locked{overflow:hidden}
+  .menu-overlay{
+    position:fixed;inset:0;z-index:1000;
+    background:rgba(11,8,9,.97);
+    display:none;flex-direction:column;
+    opacity:0;transition:opacity .25s ease;
+  }
+  @supports((backdrop-filter:blur(4px)) or (-webkit-backdrop-filter:blur(4px))){
+    .menu-overlay{background:rgba(11,8,9,.86);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  }
+  .menu-overlay.open{display:flex;opacity:1}
+  .menu-bar{
+    flex:0 0 auto;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:calc(12px + env(safe-area-inset-top)) 18px 12px;
+    background:rgba(22,19,20,.92);
+    border-bottom:1px solid var(--line);
+  }
+  .menu-bar .mt{font-weight:800;font-size:17px;color:var(--gold)}
+  .menu-close{
+    width:42px;height:42px;flex:0 0 auto;
+    border:1px solid var(--line);background:#241e1f;color:var(--text);
+    border-radius:12px;display:grid;place-items:center;cursor:pointer;
+    transition:transform .15s ease,border-color .15s ease;
+  }
+  .menu-close:active{transform:scale(.93)}
+  @media(hover:hover){.menu-close:hover{border-color:var(--gold)}}
+  .menu-close svg{width:20px;height:20px}
+  .menu-scroll{
+    flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;
+    padding:14px 14px calc(20px + env(safe-area-inset-bottom));
+    display:flex;justify-content:center;
+  }
+  .menu-scroll img{
+    width:100%;max-width:560px;height:auto;display:block;
+    border-radius:14px;border:1px solid var(--line);
+    background:#161314 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24' fill='none' stroke='%23e8b14c' stroke-width='2'><line x1='12' y1='2' x2='12' y2='6'/><line x1='12' y1='18' x2='12' y2='22'/><line x1='4.9' y1='4.9' x2='7.8' y2='7.8'/><line x1='16.2' y1='16.2' x2='19.1' y2='19.1'/><line x1='2' y1='12' x2='6' y2='12'/><line x1='18' y1='12' x2='22' y2='12'/></svg>") center 60px no-repeat;
+    min-height:200px;
+  }
 </style>
 </head>
 <body>
   <main class="wrap">
     <!-- Logo -->
     <img class="logo" src="/assets/logo-transparent.png" alt="مندي أبو نورة - Mandi Abu Noura" width="800" height="430" />
-    <p class="tagline">مندي على الطريقة التقليدية <span class="dot">•</span> الرياض</p>
-    <span class="opentag"><span class="ping"></span> نستقبل طلباتكم الآن</span>
+    <p class="tagline">الرياض</p>
 
     <!-- Menu (featured) -->
-    <section class="group">
+    <section class="group g-menu">
       <h2 class="group-label">القائمة</h2>
       <div class="links">
-        <a class="card featured d1" href="/menu.pdf" target="_blank" rel="noopener" aria-label="عرض المنيو">
+        <a class="card featured d1" href="/assets/menu.jpg" id="menuBtn" aria-label="عرض المنيو" aria-haspopup="dialog">
           <span class="ic" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7M9 11h7"/></svg>
           </span>
@@ -296,7 +339,7 @@
     </section>
 
     <!-- Order / Contact -->
-    <section class="group">
+    <section class="group g-contact">
       <h2 class="group-label">الطلب والتواصل</h2>
       <div class="links">
         <a class="card wa d2" href="https://wa.me/966558454573" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
@@ -318,10 +361,10 @@
     </section>
 
     <!-- App download -->
-    <section class="group">
+    <section class="group g-app">
       <h2 class="group-label">حمّل تطبيقنا</h2>
       <div class="apps">
-        <a class="store d4" href="https://play.google.com/store/search?q=%D9%85%D9%86%D8%AF%D9%8A%20%D8%A3%D8%A8%D9%88%20%D9%86%D9%88%D8%B1%D8%A9&c=apps" target="_blank" rel="noopener" aria-label="تحميل التطبيق على أندرويد">
+        <a class="store d1" href="https://play.google.com/store/apps/details?id=com.foodtech.mandiabunoura" target="_blank" rel="noopener" aria-label="تحميل التطبيق على أندرويد">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.18 2.3a1.04 1.04 0 0 0-.24.7v18a1.04 1.04 0 0 0 .24.7l.05.05L13.3 11.7v-.24L3.23 2.25l-.05.05z"/><path d="M16.66 15.08 13.3 11.7v-.24l3.36-3.36.08.04 3.98 2.26c1.14.64 1.14 1.7 0 2.35l-3.98 2.26-.08.05z"/><path d="m16.74 15.03-3.44-3.44L3.18 21.7c.38.4 1 .45 1.7.06l11.86-6.73"/><path d="M16.74 8.18 4.88 1.45c-.7-.4-1.32-.35-1.7.06l10.12 10.08 3.44-3.41z"/></svg>
           <span class="lbl"><small>متوفر على</small><b>Android</b></span>
         </a>
@@ -333,7 +376,7 @@
     </section>
 
     <!-- Social -->
-    <section class="group">
+    <section class="group g-social">
       <h2 class="group-label">تابعونا</h2>
       <div class="social">
         <a class="soc ig d5" href="https://www.instagram.com/mandiabunoura1" target="_blank" rel="noopener" aria-label="انستقرام">
@@ -346,10 +389,36 @@
     </section>
 
     <footer>
-      <p>جميع منتجاتنا حلال — مندي على الطريقة التقليدية</p>
       <p>© <span id="yr">2026</span> مندي أبو نورة · <a href="https://mandiabonoura.com">mandiabonoura.com</a></p>
     </footer>
   </main>
-  <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+
+  <!-- Menu viewer (opens in-page) -->
+  <div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="المنيو">
+    <div class="menu-bar">
+      <span class="mt">المنيو</span>
+      <button class="menu-close" id="menuClose" type="button" aria-label="إغلاق">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="menu-scroll" id="menuScroll">
+      <img id="menuImg" data-src="/assets/menu.jpg" alt="منيو مندي أبو نورة — جميع الأطباق والأسعار" />
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('yr').textContent=new Date().getFullYear();
+    (function(){
+      var ov=document.getElementById('menuOverlay'),
+          img=document.getElementById('menuImg'),
+          scroll=document.getElementById('menuScroll');
+      function open(e){if(e)e.preventDefault();if(!img.src)img.src=img.getAttribute('data-src');ov.classList.add('open');document.body.classList.add('locked');scroll.scrollTop=0;}
+      function close(){ov.classList.remove('open');document.body.classList.remove('locked');}
+      document.getElementById('menuBtn').addEventListener('click',open);
+      document.getElementById('menuClose').addEventListener('click',close);
+      ov.addEventListener('click',function(e){if(e.target===ov||e.target===scroll)close();});
+      document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('open'))close();});
+    })();
+  </script>
 </body>
 </html>
