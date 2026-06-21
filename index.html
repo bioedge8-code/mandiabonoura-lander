@@ -8,7 +8,7 @@
 <!-- ===== Primary SEO ===== -->
 <title>مندي أبو نورة | المنيو والطلب والفروع - مطعم مندي بالرياض</title>
 <meta name="description" content="مندي أبو نورة - أشهى المندي على الطريقة التقليدية في الرياض. تصفّح المنيو، اطلب عبر التطبيق، تواصل مع خدمة العملاء على واتساب، وزُر فرعنا في حي النزهة. كل روابطنا في مكان واحد." />
-<meta name="keywords" content="مندي أبو نورة, مندي الرياض, مطعم مندي, مندي النزهة, تيس مندي, دجاج مندي, mandi abu noura, مندي أبونورة, افضل مندي بالرياض" />
+<meta name="keywords" content="مندي أبو نورة, مندي ابو نورة, مطعم مندي ابو نورة, ابو نورة الفوزان, محمد الفوزان, مندي الفوزان, مندي الرياض, مطعم مندي, مندي النزهة, تيس مندي, دجاج مندي, mandi abu noura, مندي أبونورة, افضل مندي بالرياض" />
 <meta name="author" content="مندي أبو نورة" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <link rel="canonical" href="https://mandiabonoura.com/lander" />
@@ -48,7 +48,8 @@
   "@context": "https://schema.org",
   "@type": "Restaurant",
   "name": "مندي أبو نورة",
-  "alternateName": "Mandi Abu Noura",
+  "alternateName": ["Mandi Abu Noura", "مندي ابو نورة", "مندي أبو نورة الفوزان"],
+  "founder": { "@type": "Person", "name": "محمد الفوزان" },
   "url": "https://mandiabonoura.com/lander",
   "image": "https://mandiabonoura.com/assets/og.jpg",
   "logo": "https://mandiabonoura.com/assets/logo.png",
@@ -307,14 +308,34 @@
   .menu-close svg{width:20px;height:20px}
   .menu-scroll{
     flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;
-    padding:14px 14px calc(20px + env(safe-area-inset-bottom));
-    display:flex;justify-content:center;
+    padding:8px 16px calc(28px + env(safe-area-inset-bottom));
   }
-  .menu-scroll img{
-    width:100%;max-width:560px;height:auto;display:block;
-    border-radius:14px;border:1px solid var(--line);
-    background:#161314 url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24' fill='none' stroke='%23e8b14c' stroke-width='2'><line x1='12' y1='2' x2='12' y2='6'/><line x1='12' y1='18' x2='12' y2='22'/><line x1='4.9' y1='4.9' x2='7.8' y2='7.8'/><line x1='16.2' y1='16.2' x2='19.1' y2='19.1'/><line x1='2' y1='12' x2='6' y2='12'/><line x1='18' y1='12' x2='22' y2='12'/></svg>") center 60px no-repeat;
-    min-height:200px;
+  .menu-inner{max-width:680px;margin-inline:auto}
+  .m-cat{
+    color:var(--gold);font-weight:800;font-size:19px;text-align:center;
+    margin:30px 0 6px;display:flex;align-items:center;gap:14px;
+  }
+  .m-cat::before,.m-cat::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+  .m-item{
+    display:flex;gap:14px;align-items:flex-start;
+    padding:15px 4px;border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .m-item:last-child{border-bottom:0}
+  .m-info{flex:1;min-width:0}
+  .m-name{font-weight:700;font-size:16.5px;color:#f6f2ed;line-height:1.35}
+  .m-desc{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.55}
+  .m-price{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:start}
+  .m-price .r{color:var(--gold);font-weight:800;font-size:18px;white-space:nowrap}
+  .m-price .r .cur{font-size:11px;font-weight:600;color:var(--gold-soft);margin-inline-start:3px}
+  .m-price .r.req{font-size:14px;color:var(--red-bright)}
+  .m-price .cal{
+    font-size:10.5px;font-weight:600;color:var(--gold-soft);
+    border:1px solid var(--line);border-radius:7px;padding:2px 7px;white-space:nowrap;
+  }
+  .m-note{
+    text-align:center;color:var(--muted);font-size:12px;line-height:1.8;
+    margin:26px auto 0;max-width:520px;padding-top:18px;
+    border-top:1px solid var(--line);
   }
 </style>
 </head>
@@ -328,7 +349,7 @@
     <section class="group g-menu">
       <h2 class="group-label">القائمة</h2>
       <div class="links">
-        <a class="card featured d1" href="/assets/menu.jpg" id="menuBtn" aria-label="عرض المنيو" aria-haspopup="dialog">
+        <a class="card featured d1" href="/menu.pdf" id="menuBtn" aria-label="عرض المنيو" aria-haspopup="dialog">
           <span class="ic" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7M9 11h7"/></svg>
           </span>
@@ -402,7 +423,49 @@
       </button>
     </div>
     <div class="menu-scroll" id="menuScroll">
-      <img id="menuImg" data-src="/assets/menu.jpg" alt="منيو مندي أبو نورة — جميع الأطباق والأسعار" />
+      <div class="menu-inner">
+
+        <h3 class="m-cat">الأطباق الرئيسية</h3>
+        <div class="m-item"><div class="m-info"><div class="m-name">تيس كامل مندي</div><div class="m-desc">تيس كامل مندي محضّر على الطريقة التقليدية بطعم أصيل وتتبيلة أبو نورة المميزة، مناسب للمناسبات والعزائم</div></div><div class="m-price"><span class="r">1679<span class="cur">ر.س</span></span><span class="cal">12500 سعرة</span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">نصف تيس مندي</div><div class="m-desc">نصف تيس مندي محضّر على الطريقة التقليدية بطعم أصيل وتتبيلة أبو نورة المميزة، خيار مثالي للعائلة</div></div><div class="m-price"><span class="r">879<span class="cur">ر.س</span></span><span class="cal">6300 سعرة</span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">ربع تيس مندي</div><div class="m-desc">ربع تيس مندي محضّر على الطريقة التقليدية بطعم أصيل وتتبيلة أبو نورة المميزة</div></div><div class="m-price"><span class="r">449<span class="cur">ر.س</span></span><span class="cal">3200 سعرة</span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">مندي الحمام</div><div class="m-desc">حمام مندي محضّر بتتبيلة أبو نورة الخاصة على الطريقة التقليدية</div></div><div class="m-price"><span class="r">69<span class="cur">ر.س</span></span><span class="cal">1080 سعرة</span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">حبة دجاج مع رز مندي</div><div class="m-desc">دجاجة كاملة مع أرز مندي بتتبيلة أبو نورة الخاصة</div></div><div class="m-price"><span class="r">50<span class="cur">ر.س</span></span><span class="cal">2610 سعرة</span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">نصف دجاج مع رز مندي</div><div class="m-desc">نصف دجاجة مع أرز مندي بتتبيلة أبو نورة الخاصة</div></div><div class="m-price"><span class="r">25<span class="cur">ر.س</span></span><span class="cal">1400 سعرة</span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">مندي دجاج سادة</div><div class="m-desc">دجاجة كاملة مطهوة على طريقة المندي بتتبيلة أبو نورة الخاصة</div></div><div class="m-price"><span class="r">34<span class="cur">ر.س</span></span><span class="cal">2610 سعرة</span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">نصف حبة دجاج مندي سادة</div><div class="m-desc">نصف دجاجة مطهوة على طريقة المندي بتتبيلة أبو نورة الخاصة</div></div><div class="m-price"><span class="r">17<span class="cur">ر.س</span></span><span class="cal">1305 سعرة تقريباً</span></div></div>
+
+        <h3 class="m-cat">الأطباق الجانبية</h3>
+        <div class="m-item"><div class="m-info"><div class="m-name">الجريش</div><div class="m-desc">من أشهر الأطباق السعودية التراثية المحضّرة على الطريقة التقليدية</div></div><div class="m-price"><span class="r">12<span class="cur">ر.س</span></span><span class="cal">350 سعرة</span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">القرصان</div><div class="m-desc">طبق نجدي أصيل يجمع خبز القرصان مع الخضار والنكهة السعودية المعروفة</div></div><div class="m-price"><span class="r">12<span class="cur">ر.س</span></span><span class="cal">250 سعرة</span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">تبولة</div><div class="m-desc">سلطة التبولة التقليدية بالخضار الطازجة: طماطم وبقدونس وبرغل مع زيت الزيتون</div></div><div class="m-price"><span class="r">10<span class="cur">ر.س</span></span><span class="cal">30 سعرة</span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">كشنة</div><div class="m-desc">بصل مقلي يُضاف للأرز لتزيينه، نكهة لذيذة للأطباق</div></div><div class="m-price"><span class="r">4<span class="cur">ر.س</span></span><span class="cal">70 سعرة</span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">رز مندي</div><div class="m-desc">رز مندي بتتبيلة أبو نورة المميزة</div></div><div class="m-price"><span class="r">8<span class="cur">ر.س</span></span><span class="cal">1300 سعرة</span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">دقوس</div><div class="m-desc">دقوس طماطم حار يضيف لمسة لذيذة مع مختلف الأطباق</div></div><div class="m-price"><span class="r">3<span class="cur">ر.س</span></span><span class="cal">240 سعرة</span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">سلطة خضراء حارة</div><div class="m-desc">سلطة خضراء محضّرة من خضار طازجة بنكهة حارة</div></div><div class="m-price"><span class="r">3<span class="cur">ر.س</span></span><span class="cal">90 سعرة</span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">طحينة</div><div class="m-desc">طحينة محضّرة بطريقة خاصة لتكمل وجبتك</div></div><div class="m-price"><span class="r">3<span class="cur">ر.س</span></span><span class="cal">310 سعرة</span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">معجوج</div><div class="m-desc">خبز معجوج محضّر من القشاط والخضار الطازجة بطعم لذيذ ومميز</div></div><div class="m-price"><span class="r">3<span class="cur">ر.س</span></span><span class="cal">90 سعرة</span></div></div>
+
+        <h3 class="m-cat">الحلويات</h3>
+        <div class="m-item"><div class="m-info"><div class="m-name">أم علي</div><div class="m-desc">حلى دافئ محبوب محضّر من رقائق العجين والحليب والمكسرات</div></div><div class="m-price"><span class="r">12<span class="cur">ر.س</span></span><span class="cal">230 سعرة</span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">كريم كراميل</div><div class="m-desc">حلى الكاسترد بطبقة الكراميل اللذيذة</div></div><div class="m-price"><span class="r">5<span class="cur">ر.س</span></span><span class="cal">160 سعرة</span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">مهلبية</div><div class="m-desc">حلى عربي تقليدي محضّر بالحليب ويُقدّم بارداً</div></div><div class="m-price"><span class="r">5<span class="cur">ر.س</span></span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">كنافة</div><div class="m-desc">كنافة طازجة محشوة بالقشطة بطعم شهي ومميز</div></div><div class="m-price"><span class="r">12<span class="cur">ر.س</span></span><span class="cal">1100 سعرة</span></div></div>
+
+        <h3 class="m-cat">المشروبات والإضافات</h3>
+        <div class="m-item"><div class="m-info"><div class="m-name">ديو</div><div class="m-desc">مشروب غازي منعش</div></div><div class="m-price"><span class="r">4<span class="cur">ر.س</span></span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">حمضيات</div><div class="m-desc">مشروب غازي بنكهة الحمضيات</div></div><div class="m-price"><span class="r">4<span class="cur">ر.س</span></span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">بيبسي</div><div class="m-desc">مشروب غازي بارد منعش</div></div><div class="m-price"><span class="r">4<span class="cur">ر.س</span></span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">بيبسي دايت</div><div class="m-desc">بيبسي دايت خالٍ من السكر</div></div><div class="m-price"><span class="r">4<span class="cur">ر.س</span></span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">لبن القرية</div><div class="m-desc">لبن طازج بارد بجوار تكية المندي</div></div><div class="m-price"><span class="r">4<span class="cur">ر.س</span></span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">مياه</div><div class="m-desc">مياه معدنية باردة</div></div><div class="m-price"><span class="r">1<span class="cur">ر.س</span></span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">صحن قصير مندي — مقاس 2</div><div class="m-desc">صحن أرز مندي معطّر بحجم صغير مناسب لشخص واحد</div></div><div class="m-price"><span class="r">5<span class="cur">ر.س</span></span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">صحن قصير مندي — مقاس 3</div><div class="m-desc">صحن أرز مندي بحجم متوسط للمشاركة الخفيفة</div></div><div class="m-price"><span class="r">7<span class="cur">ر.س</span></span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">صحن قصير مندي — مقاس 4</div><div class="m-desc">صحن أرز مندي يكفي لشخصين</div></div><div class="m-price"><span class="r">15<span class="cur">ر.س</span></span></div></div>
+        <div class="m-item"><div class="m-info"><div class="m-name">صحن قصير مندي — مقاس 6</div><div class="m-desc">أكبر صحن أرز مندي للمجموعات، السعر يُحدّد عند الطلب</div></div><div class="m-price"><span class="r req">حسب الطلب</span></div></div>
+
+        <p class="m-note">جميع الأسعار بالريال السعودي وتشمل ضريبة القيمة المضافة.<br>الأسعار والسعرات الحرارية تقريبية وقابلة للتغيير.</p>
+      </div>
     </div>
   </div>
 
@@ -410,9 +473,8 @@
     document.getElementById('yr').textContent=new Date().getFullYear();
     (function(){
       var ov=document.getElementById('menuOverlay'),
-          img=document.getElementById('menuImg'),
           scroll=document.getElementById('menuScroll');
-      function open(e){if(e)e.preventDefault();if(!img.src)img.src=img.getAttribute('data-src');ov.classList.add('open');document.body.classList.add('locked');scroll.scrollTop=0;}
+      function open(e){if(e)e.preventDefault();ov.classList.add('open');document.body.classList.add('locked');scroll.scrollTop=0;}
       function close(){ov.classList.remove('open');document.body.classList.remove('locked');}
       document.getElementById('menuBtn').addEventListener('click',open);
       document.getElementById('menuClose').addEventListener('click',close);
