@@ -470,12 +470,15 @@
     (function(){
       var ov=document.getElementById('menuOverlay'),
           scroll=document.getElementById('menuScroll');
-      function open(e){if(e)e.preventDefault();ov.classList.add('open');document.body.classList.add('locked');scroll.scrollTop=0;}
-      function close(){ov.classList.remove('open');document.body.classList.remove('locked');}
+      function open(e){if(e)e.preventDefault();ov.classList.add('open');document.body.classList.add('locked');scroll.scrollTop=0;if(location.hash!=='#menu')history.replaceState(null,'','#menu');}
+      function close(){ov.classList.remove('open');document.body.classList.remove('locked');if(location.hash==='#menu')history.replaceState(null,'',location.pathname+location.search);}
       document.getElementById('menuBtn').addEventListener('click',open);
       document.getElementById('menuClose').addEventListener('click',close);
       ov.addEventListener('click',function(e){if(e.target===ov||e.target===scroll)close();});
       document.addEventListener('keydown',function(e){if(e.key==='Escape'&&ov.classList.contains('open'))close();});
+      window.addEventListener('hashchange',function(){if(location.hash==='#menu')open();else close();});
+      // فتح المنيو مباشرة عند الدخول عبر رابط الباركود (#menu)
+      if(location.hash==='#menu')open();
     })();
   </script>
 </body>
